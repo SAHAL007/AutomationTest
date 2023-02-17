@@ -3,6 +3,7 @@ package BrainStation;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 public class Pages extends BasePage {
     By loginButtonLocator = By.xpath("//*[text()='Sign in ']");
@@ -24,13 +25,23 @@ public class Pages extends BasePage {
 
     By selectTripContinue=By.xpath("//*[text()='Continue']");
 
-    By selectYes = By.xpath("//*[text()='Yes']");
-    By dropdownClass = By.className("fi fi-chevron-down");
+    By selectYes = By.xpath("//*[contains(@class,'text-start')]/*[text()='Yes']");
+    By dropdownClass = By.cssSelector(".form-control.rounded");
     By selectNtnui = By.className("//*[text()='NTNUI']");
+    By selectNeedTicket = By.xpath("//*[text()='Need tickets for yourself?']/following-sibling::div/*[text()='No']");
+    By selectTicketDiscounts =By.xpath("//*[text()='Activate ticket discounts?']/following-sibling::div/*[text()='No']");
+    By selectSharebus =By.xpath("//*[text()='Create Sharebus']");
+    By selectPublish =By.xpath("//*[text()='Publish']");
+    By selectTrip =By.cssSelector(".form-control.rounded.is-invalid");
+    By selectCategory =By.xpath("//*[text()='Sport']");
+    By selectPreview =By.xpath("//*[text()='Preview and publish']");
+    By selectMyBus =By.xpath("//*[text()='My busses']");
+    By selectMyTour =By.xpath("//*[text()='Tour']");
     public Pages(){
         super();
     }
     public void gotoLoginPage(){
+
         driver.get("https://test.sharebus.co/");
         WebElement loginButton = driver.findElement(loginButtonLocator);
         loginButton.click();
@@ -127,18 +138,75 @@ public class Pages extends BasePage {
 
     }
     public void membershipInformation(){
-        waitTime(5000);
+        waitTime(15000);
 
         WebElement yesButton = driver.findElement(selectYes);
-        scrollToElement(yesButton);
-        waitTime(3000);
+//        scrollToElement(yesButton);
         yesButton.click();
         waitTime(2000);
+
         WebElement dropDown = driver.findElement(dropdownClass);
-        dropDown.click();
+        dropDown.sendKeys("NTNUI");
         waitTime(3000);
-        WebElement ntnui =driver.findElement(selectNtnui);
-        ntnui.click();
+
+        WebElement continueButton = driver.findElement(selectTripContinue);
+        scrollToElement(continueButton);
+        continueButton.click();
+        waitTime(3000);
+
+        WebElement needTicket =driver.findElement(selectNeedTicket);
+        scrollToElement(needTicket);
+        needTicket.click();
+        waitTime(2000);
+
+        WebElement needDiscount =driver.findElement(selectTicketDiscounts);
+        scrollToElement(needDiscount);
+        needDiscount.click();
+        waitTime(2000);
+
+        WebElement createSharebus =driver.findElement(selectSharebus);
+        scrollToElement(createSharebus);
+        createSharebus.click();
+        waitTime(20000);
+
+        WebElement publishButton =driver.findElement(selectPublish);
+        scrollToElement(publishButton);
+        publishButton.click();
+        waitTime(12000);
+
+        WebElement tripName =driver.findElement(selectTrip);
+        tripName.sendKeys("Tour");
+        waitTime(5000);
+
+        WebElement category =driver.findElement(selectCategory);
+        category.click();
+        waitTime(5000);
+
+        WebElement previewPublish =driver.findElement(selectPreview);
+        scrollToElement(previewPublish);
+        previewPublish.click();
+        waitTime(10000);
+
+        WebElement publishButton2 =driver.findElement(selectPublish);
+        scrollToElement(publishButton2);
+        publishButton2.click();
+        waitTime(10000);
+
+
+        WebElement myBusButton =driver.findElement(selectMyBus);
+        scrollToElement(myBusButton);
+        myBusButton.click();
+        waitTime(10000);
+
+        WebElement myTour =driver.findElement(selectMyTour);
+        scrollToElement(myTour);
+        if(myTour.isDisplayed()){
+            System.out.println("The new Trip is displayed");
+        }
+        else {
+            System.out.println("The new Trip is not displayed");
+        }
+        waitTime(2000);
 
     }
 }
