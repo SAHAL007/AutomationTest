@@ -9,6 +9,7 @@ public class Browser {
 
     public void openChromeBrowser() {
         System.out.println("hello");
+
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();

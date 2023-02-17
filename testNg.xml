@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="Regression" verbose="1" >
+<suite name="BrainStation" verbose="1" >
     <test name="TC#1: Validate Hello World">
         <classes>
             <class name="BrainStation.TestCase">
                 <methods>
-                    <include name="goToLoginPage"/>
+                    <include name="gotoLoginPage"/>
                     <include name="verifyLogIn"/>
                     <include name="userSelect"/>
                     <include name="clickShare"/>
                     <include name="tripInfo"/>
                     <include name="membershipInfo"/>
-                    <include name=""/>
+<!--                    <include name="closeBrowser"/>-->
                 </methods>
             </class>
         </classes>
