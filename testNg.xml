@@ -9,6 +9,10 @@
                     <include name="goToLoginPage"/>
                     <include name="verifyLogIn"/>
                     <include name="userSelect"/>
+                    <include name="clickShare"/>
+                    <include name="tripInfo"/>
+                    <include name="membershipInfo"/>
+                    <include name=""/>
                 </methods>
             </class>
         </classes>
