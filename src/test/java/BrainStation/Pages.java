@@ -24,7 +24,9 @@ public class Pages extends BasePage {
 
     By selectTripContinue=By.xpath("//*[text()='Continue']");
 
-    By onBehalfOrg = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/div[2]/div[1]/div/div[1]/div[1]/button[1]");
+    By selectYes = By.xpath("//*[text()='Yes']");
+    By dropdownClass = By.className("fi fi-chevron-down");
+    By selectNtnui = By.className("//*[text()='NTNUI']");
     public Pages(){
         super();
     }
@@ -64,7 +66,9 @@ public class Pages extends BasePage {
         waitTime(10000);
 
         WebElement setupShareBus =driver.findElement(selectShareBus);
-        waitTime(5000);
+
+        scrollToElement(setupShareBus);
+        waitTime(2000);
         setupShareBus.click();
     }
     public void tripDetails(){
@@ -116,6 +120,8 @@ public class Pages extends BasePage {
       waitTime(4000);
 
       WebElement tripContinue = driver.findElement(selectTripContinue);
+      scrollToElement(tripContinue);
+      waitTime(3000);
       tripContinue.click();
 
 
@@ -123,7 +129,16 @@ public class Pages extends BasePage {
     public void membershipInformation(){
         waitTime(5000);
 
-        WebElement onBehalf = driver.findElement(onBehalfOrg);
-        onBehalf.click();
+        WebElement yesButton = driver.findElement(selectYes);
+        scrollToElement(yesButton);
+        waitTime(3000);
+        yesButton.click();
+        waitTime(2000);
+        WebElement dropDown = driver.findElement(dropdownClass);
+        dropDown.click();
+        waitTime(3000);
+        WebElement ntnui =driver.findElement(selectNtnui);
+        ntnui.click();
+
     }
 }

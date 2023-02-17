@@ -6,7 +6,7 @@ public class TestCase {
     Browser browser= new Browser();
     Pages pages;
     @Test
-    public void goToLoginPage(){
+    public void gotoLoginPage(){
         browser.openChromeBrowser();
           pages = new Pages();
          pages.gotoLoginPage();
